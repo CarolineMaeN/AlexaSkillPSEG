@@ -1,0 +1,71 @@
+var Alexa = require('alexa-sdk');
+
+const APP_ID = "amzn1.ask.skill.1e041c80-9217-4ddb-b923-295e425d4ea8";
+var anyIssue = "The help desk is open 24/7. voice and PC help is available Monday through Friday 7 to 5 Premium Software help is available Monday through Friday 8:30 to 5";
+var loginIssues= 'The help desk is open for login issues 24/7';
+var PCIssues= 'The help desk is open for PC issues 24/7';
+var voiceIssues = 'The help desk is open for voice and PC issues Monday through Friday 7 to 5';
+var SoftwareIssues = 'The help desk is open for Premium Software issues Monday through Friday 8:30 to 5';
+var BusApp= 'The help desk is open for Buisness Application issues 24/7';
+var HELPMESSAGE = 'What do you need to know';
+var STOPMESSAGE = 'Goodbye';
+
+
+
+
+
+exports.handler = (event, context, callback) => {
+    const alexa = Alexa.handler(event, context);
+    alexa.APP_ID = APP_ID;
+    
+    //alexa.appId = 'amzn1.ask.skill.1e041c80-9217-4ddb-b923-295e425d4ea8';
+
+   // alexa.dynamoDBTableName = 'YourTableNameUK'; // creates new table for session.attributes
+ 
+    alexa.registerHandlers(handlers);
+
+    alexa.execute();
+
+    callback(null, 'Hello from Lambda');
+};
+
+var handlers = {
+    'LaunchRequest': function () {
+         this.emit(':tell', 'PSEGInfoIntent');
+    },
+    
+    'ContactHoursIntent' : function(){
+    this.emit(':tell', anyIssue );
+    },
+    'LoginIntent' : function(){
+    this.emit(':tell', loginIssue );
+    },
+    'PCIntent' : function(){
+    this.emit(':tell', PCIssues );
+    },
+    'voiceIntent' : function(){
+    this.emit(':tell', voiceIssue );
+    },
+    'softwareIntent' : function(){
+    this.emit(':tell', SoftwareIssue );
+    },
+    'Unhandled': function() {
+    this.emit(':tell', anyIssue);
+    },
+
+
+    'AMAZON.HelpIntent': function () {
+        const speechOutput = this.t('HELP_MESSAGE');
+       const reprompt = this.t('HELP_MESSAGE');
+        this.emit(':ask', speechOutput, reprompt);
+    },
+    'AMAZON.CancelIntent': function () {
+        this.emit(':tell', this.t('STOP_MESSAGE'));
+    },
+    'AMAZON.StopIntent': function () {
+        this.emit(':tell', this.t('STOP_MESSAGE'));
+    },
+    'SessionEndedRequest': function () {
+        this.emit(':tell', this.t('STOP_MESSAGE'));
+    }
+};
