@@ -1,0 +1,70 @@
+{
+  "intents": [
+    {
+      "intent": "AMAZON.CancelIntent"
+    },
+    {
+      "intent": "AMAZON.HelpIntent"
+    },
+    {
+      "intent": "AMAZON.StopIntent"
+    },
+    {
+      "slots": [
+        {
+          "name": "Always",
+          "type": "Always"
+        }
+      ],
+      "intent": "HelpDeskIntent"
+    },
+    {
+      "slots": [
+        {
+          "name": "CallEight",
+          "type": "CallEight"
+        }
+      ],
+      "intent": "CallEightIntent"
+    },
+    {
+      "slots": [
+        {
+          "name": "CallSeven",
+          "type": "CallSeven"
+        }
+      ],
+      "intent": "CallSevenIntent"
+    },
+    {
+      "slots": [
+        {
+          "name": "Always",
+          "type": "Always"
+        }
+      ],
+      "intent": "numberIntent"
+    }
+  ]
+}
+
+HelpDeskIntent When is P.S.E.G open
+HelpDeskIntent When is I.T open
+HelpDeskIntent when is the help desk open
+HelpDeskIntent When Can I call {Always}
+HelpDeskIntent When Can I call about {Always}
+HelpDeskIntent When is the help desk open about {Always}
+HelpDeskIntent I need help with {Always}
+HelpDeskIntent when is It open for {Always}
+CallEightIntent When Can I call {CallEight}
+CallEightIntent When Can I call about {CallEight}
+CallEightIntent When is the help desk open about {CallEight}
+CallEightIntent I need help with {CallEight}
+CallEightIntent when is It open for {CallEight}
+CallSevenIntent When Can I call {CallSeven}
+CallSevenIntent When Can I call about {CallSeven}
+CallSevenIntent When is the help desk open about {CallSeven}
+CallSevenIntent I need help with {CallSeven}
+CallSevenIntent when is It open for {CallSeven}
+numberIntent what is the {Always} phone number
+numberIntent what is the phone number for {Always}
